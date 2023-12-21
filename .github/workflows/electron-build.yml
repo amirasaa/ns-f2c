@@ -24,6 +24,8 @@ jobs:
       run: npm ci
     - name: Build React app
       run: npm run react-build
+    - name: Install snapcraft
+      run: sudo snap install snapcraft --classic
     - name: Build Electron app
       run: npm run electron-build
       env:
