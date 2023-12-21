@@ -19,11 +19,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12
+    - name: Build React app
+      run: npm run react-build
     - name: Install snapcraft
       run: sudo snap install snapcraft --classic
       if: runner.os == 'Linux'
-    - name: Build React app
-      run: npm run react-build
     - name: Build/Release Electron app
       uses: samuelmeuli/action-electron-builder@v1
       with: 
