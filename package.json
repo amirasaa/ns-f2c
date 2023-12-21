@@ -7,8 +7,7 @@
     "appId": "com.example.ns.f2c",
     "mac": {
       "category": "public.app-category.developer-tools"
-    },
-    "publish": "always"
+    }
   },
   "homepage": "./",
   "dependencies": {
@@ -32,7 +31,7 @@
     "react-build": "react-scripts build",
     "build": "webpack --mode production",
     "pack": "electron-builder --dir",
-    "electron-build": "electron-builder build",
+    "electron-build": "electron-builder build --publish always",
     "postinstall": "electron-builder install-app-deps",
     "electron-start": "electron .",
     "test": "react-scripts test",
