@@ -26,6 +26,8 @@ jobs:
     - name: Install snapcraft
       run: sudo snap install snapcraft --classic
       if: runner.os == 'Linux'
+    - name: Test electron app
+      run: npm run electron-build
     - name: Build/Release Electron app
       uses: samuelmeuli/action-electron-builder@v1
       with: 
