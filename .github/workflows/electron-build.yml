@@ -26,6 +26,7 @@ jobs:
       run: npm run react-build
     - name: Build Electron app
       run: npm run electron-build
+      publish: "always"
       env:
         GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
     - name: Create Release
