@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: 16
     - name: Install Independecies
-      run: npm ci
+      run: npm i && npm ci
     - name: Build React app
       run: npm run react-build
     - name: Install snapcraft
