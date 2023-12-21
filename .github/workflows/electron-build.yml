@@ -37,11 +37,13 @@ jobs:
         git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
         git tag "v$(date +'%Y%m%d%H%M%S')"
         git push origin --tag
+        env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
       with:
         tag_name: ${{ steps.create_git_tag.outputs.tag }}
         release_name: Release ${{ steps.create_git_tag.outputs.tag }}
