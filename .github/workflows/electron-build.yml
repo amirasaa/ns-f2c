@@ -19,6 +19,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12
+    - name: Install Independecies
+      run: npm ci
     - name: Build React app
       run: npm run react-build
     - name: Install snapcraft
