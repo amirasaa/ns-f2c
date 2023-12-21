@@ -7,7 +7,8 @@
     "appId": "com.example.ns.f2c",
     "mac": {
       "category": "public.app-category.developer-tools"
-    }
+    },
+    "publish": "always"
   },
   "homepage": "./",
   "dependencies": {
