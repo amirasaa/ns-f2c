@@ -31,6 +31,12 @@ jobs:
       run: npm run electron-build
       env:
         GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+    - name: Create Git tag
+      run:  |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git tag "v$(date +'%Y%m%d%H%M%S')"
+        git push origin --tag
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
