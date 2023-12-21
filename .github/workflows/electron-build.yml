@@ -35,6 +35,7 @@ jobs:
       run:  |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        echo "::set-env name=TAG_NAME::v$(date +'%Y%m%d%H%M%S')"
         git tag "v$(date +'%Y%m%d%H%M%S')"
         git push origin --tag
         env:
