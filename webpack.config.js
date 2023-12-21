@@ -6,7 +6,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\\.tsx?$/,
+        test: /\.tsx$/,
         use: 'ts-loader',
         exclude: /node_modules/
       }
@@ -21,7 +21,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './public/index.html'
     })
   ]
 };
