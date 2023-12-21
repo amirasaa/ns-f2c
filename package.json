@@ -6,7 +6,8 @@
   "build": {
     "appId": "com.example.ns.f2c",
     "mac": {
-      "category": "public.app-category.developer-tools"
+      "category": "public.app-category.developer-tools",
+      "identity": null
     }
   },
   "homepage": "./",
