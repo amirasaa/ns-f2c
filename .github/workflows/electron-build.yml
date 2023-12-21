@@ -26,6 +26,8 @@ jobs:
       run: npm run react-build
     - name: Build Electron app
       run: npm run electron-build
+      env:
+        GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -41,6 +43,7 @@ jobs:
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./dist/my-app.${{ matrix.os == 'windows-latest' && 'exe' || 'dmg' }}
