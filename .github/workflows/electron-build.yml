@@ -26,7 +26,7 @@ jobs:
       run: npm run react-build
     - name: Install snapcraft
       run: sudo snap install snapcraft --classic
-      if: runner.os != 'Windows'
+      if: runner.os == 'Linux'
     - name: Build Electron app
       run: npm run electron-build
       env:
