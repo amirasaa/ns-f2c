@@ -3,14 +3,10 @@ name: Electron Build
 on:
   push:
     branches: [ main ]
-
+    
 jobs:
-  release:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+  build_on_mac:
+    runs-on: macOS-latest
       
     steps:
     - name: Check out Git repository
@@ -23,11 +19,10 @@ jobs:
       run: npm i && npm ci
     - name: Build React app
       run: npm run react-build
-    - name: Install snapcraft
-      run: sudo snap install snapcraft --classic
-      if: runner.os == 'Linux'
     - name: Test electron app
       run: npm run electron-build
+      env:
+        GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN  }}
     - name: Build/Release Electron app
       uses: samuelmeuli/action-electron-builder@v1
       with: 
