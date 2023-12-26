@@ -1,6 +1,6 @@
 {
   "name": "ns-f2c-app",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "private": true,
   "main": "src/public/electron.js",
   "build": {
@@ -36,7 +36,9 @@
     "postinstall": "electron-builder install-app-deps",
     "electron-start": "electron .",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "release": "electron-builder"
+
   },
   "eslintConfig": {
     "extends": [
