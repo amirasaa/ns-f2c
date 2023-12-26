@@ -5,7 +5,8 @@ on:
     branches: [ main ]
     tags:
       - 'v*'
-    
+      
+jobs:    
   release:
     runs-on: ${{ matrix.os }}
 
