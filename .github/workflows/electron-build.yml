@@ -6,9 +6,12 @@ on:
     tags:
       - 'v*'
     
-jobs:
-  build_on_mac:
-    runs-on: macOS-latest
+  release:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
       
     steps:
     - name: Check out Git repository
@@ -17,11 +20,11 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 16
-    - name: Install Independecies
+    - name: Install Dependecies
       run: npm i && npm ci
     - name: Build React app
       run: npm run react-build
-    - name: Test electron app
+    - name: Build Electron app
       run: npm run electron-build
       env:
         GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN  }}
