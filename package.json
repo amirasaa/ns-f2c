@@ -2,7 +2,8 @@
   "name": "ns-f2c-app",
   "version": "0.1.0",
   "private": true,
-  "main": "src/public/electron.js",
+  "type": "module",
+  "main": "public/electron.js",
   "build": {
     "appId": "com.example.ns.f2c",
     "mac": {
@@ -41,7 +42,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "release": "electron-builder"
-
   },
   "eslintConfig": {
     "extends": [
@@ -64,7 +64,7 @@
   "devDependencies": {
     "@types/webpack": "^5.28.5",
     "@types/webpack-dev-server": "^4.7.2",
-    "electron": "^28.0.0",
+    "electron": "^28.1.0",
     "electron-builder": "^24.9.1",
     "html-webpack-plugin": "^5.6.0",
     "ts-loader": "^9.5.1",
