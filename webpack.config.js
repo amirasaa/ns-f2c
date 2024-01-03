@@ -6,7 +6,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.ts$|tsx/,
         use: 'ts-loader',
         exclude: /node_modules/
       }
@@ -19,6 +19,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  target: 'electron-renderer',
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html'

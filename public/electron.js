@@ -1,13 +1,8 @@
-import { join } from 'path';
-import isDev from 'electron-is-dev';
-import { app, BrowserWindow, ipcMain, dialog } from 'electron';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+const { app, BrowserWindow, ipcMain, dialog } = require('electron/main');
+const path = require('node:path');
 
 let mainWindow;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 async function handleFileOpen () {
   const { canceled, filePaths } = await dialog.showOpenDialog();
@@ -21,20 +16,21 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: '../src/preload.ts',
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, 'preload.js'),
     }
   });
 
-  const startURL = isDev
-    ? 'http://localhost:3000'
-    : `file://${join(__dirname, '../build/index.html')}`;
-
-  mainWindow.loadURL(startURL);
+  mainWindow.loadFile('dist/index.html');
 
   mainWindow.on('closed', () => (mainWindow = null));
 }
 
-app.on('ready', createWindow, ipcMain.handle('dialog:openFile', handleFileOpen));
+app.whenReady().then(() => {
+  ipcMain.handle('dialog:openFile', handleFileOpen);
+  createWindow();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
