@@ -6,7 +6,7 @@ const App = () => {
     const handleClick = async () =>{
         try {
             console.log('Click happened');
-            const filePath = await window.electronAPI.openFile;
+            const filePath = await window.electronAPI.openFile();
             console.log(filePath);
         } catch (error) {
             console.log(error);

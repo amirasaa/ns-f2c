@@ -21,9 +21,7 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      preload: join(__dirname, 'preload.ts')
+      preload: '../src/preload.ts',
     }
   });
 
@@ -36,7 +34,7 @@ function createWindow() {
   mainWindow.on('closed', () => (mainWindow = null));
 }
 
-app.on('ready', createWindow);
+app.on('ready', createWindow, ipcMain.handle('dialog:openFile', handleFileOpen));
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
@@ -44,7 +42,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (mainWindow === null) {
-    ipcMain.handle('dialog:openFile', handleFileOpen);
     createWindow();
   };
 });
